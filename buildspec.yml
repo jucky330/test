@@ -18,7 +18,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo "[{\"name\":\"${IMAGE_REPO}\",\"imageUri\":\"${REPOSITORY_URI}:${IMAGE_TAG}\"}]" > imagedefinitions.json
-  artifacts:
-    files:
-      - test/imagedefinitions.json
-    discard-paths: yes
+artifacts:
+  files:
+    - test/imagedefinitions.json
+  discard-paths: yes
