@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+       - sudo apt-get update -y
+       - sudo apt-get install -y jq
+       - REPOSITORY_URI=$(cat imageDetail.json | jq .ImageURI | sed 's/"//g' | sed -E 's/@.*//g')
+       - echo $REPOSITORY_URI
+       - IMAGE_TAG=$(cat imageDetail.json | jq .ImageTags[0] | sed 's/"//g')
+       - echo $IMAGE_TAG
+  post_build:
+    commands:
+       - printf '[{"name":"test","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+artifacts:
+    files: imagedefinitions.json
