@@ -1,3 +1,6 @@
+version: '2'
+services:
 # http
 http:
-  build: http
+  build: ./http
+  image: latest
