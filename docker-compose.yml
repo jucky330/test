@@ -1,6 +1,5 @@
 version: '2'
 services:
-# http
-http:
-  build: ./http
-  image: latest
+  http:
+    build: ./http
+    image: latest
