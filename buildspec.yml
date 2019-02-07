@@ -14,7 +14,7 @@ phases:
       - echo Building the Docker image...          
       - docker-compose build
 #     - docker-compose build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      - docker tag http:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG      
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG      
   post_build:
     commands:
       - echo Build completed on `date`
