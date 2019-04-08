@@ -20,6 +20,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - pwd
       - echo "[{\"name\":\"${IMAGE_REPO}\",\"imageUri\":\"${REPOSITORY_URI}:${IMAGE_TAG}\"}]" > imageDetail.json
 artifacts:
   files:
