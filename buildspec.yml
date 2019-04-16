@@ -12,15 +12,14 @@ phases:
       - chmod +x /usr/local/bin/docker-compose
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker-compose build
-#     - docker-compose build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+#      - docker-compose build
+      - docker-compose build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG      
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - pwd
       - echo "[{\"name\":\"${IMAGE_REPO}\",\"imageUri\":\"${REPOSITORY_URI}:${IMAGE_TAG}\"}]" > imageDetail.json
 artifacts:
   files:
